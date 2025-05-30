@@ -1,0 +1,150 @@
+/* Archivo: static/users_frontend/css/base.css */
+
+/* Reset básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Header */
+.site-header {
+  background: #000;
+  color: #fff;
+  padding: 0.5rem 1rem;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+}
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Logo */
+.logo img {
+  height: 40px;
+}
+
+/* Navegación */
+.main-nav ul {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+}
+.main-nav a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+}
+.main-nav a:hover {
+  text-decoration: underline;
+}
+
+/* Dropdown “Personal” */
+.main-nav .dropdown {
+  position: relative;
+}
+.main-nav .dropdown-toggle {
+  display: inline-block;
+  cursor: pointer;
+}
+.main-nav .dropdown-toggle .arrow {
+  margin-left: 0.3em;
+  font-size: 0.75em;
+  transition: transform 0.2s;
+}
+.main-nav .dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: #000;
+  list-style: none;
+  padding: 0.5rem 0;
+  margin: 0;
+  min-width: 140px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+  z-index: 10;
+}
+.main-nav .dropdown-menu li a {
+  display: block;
+  padding: 0.5rem 1rem;
+  color: #fff;
+  text-decoration: none;
+}
+.main-nav .dropdown-menu li a:hover {
+  background: #111;
+}
+/* Mostrar submenú al hover */
+.main-nav .dropdown:hover .dropdown-menu {
+  display: block;
+}
+/* Girar flecha al hover */
+.main-nav .dropdown:hover .arrow {
+  transform: rotate(180deg);
+}
+
+/* Acceder / Cerrar sesión */
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.btn-access {
+  background: #fff;
+  color: #000;
+  border: none;
+  padding: 0.4rem 0.8rem;
+  cursor: pointer;
+  font-weight: 500;
+  border-radius: 4px;
+}
+.btn-access:hover {
+  opacity: 0.9;
+}
+.welcome {
+  font-size: 0.9rem;
+}
+
+/* Carrito placeholder */
+.cart-placeholder {
+  width: 32px;
+  height: 32px;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+/* Main content spacing */
+main {
+  padding: 2rem 1rem;
+  margin-top: 60px; /* deja espacio para el header */
+}
+/* -------------------------- */
+/* Mensajes flash (éxito/error) */
+/* -------------------------- */
+.messages {
+  list-style: none;           
+  max-width: 1200px;          
+  margin: 1rem auto;          /* ahora aplica bajo el padding de main */
+  padding: 0;                 
+}
+.messages li {
+  padding: 0.75rem 1rem;      
+  border-radius: 4px;         
+  margin-bottom: 0.75rem;     
+  font-weight: 500;           
+  text-align: center;         
+}
+.messages li.success {
+  background: #d4edda;
+  color: #155724;
+}
+.messages li.error {
+  background: #f8d7da;
+  color: #721c24;
+}

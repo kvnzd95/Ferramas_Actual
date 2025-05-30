@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Detalle de {{ usuario.username }}{% endblock %}
+
+{% block extra_css %}
+  <link rel="stylesheet" href="{% static 'users_frontend/css/personal_detail.css' %}">
+{% endblock %}
+
+{% block content %}
+  <!-- Botón de volver -->
+  <div class="back-button-container">
+    <a href="{% url 'personal_list' %}" class="back-button">
+      ← Volver a Personal
+    </a>
+  </div>
+
+  <h1 class="personal-detail-title">Datos de {{ usuario.username }}</h1>
+  <ul class="detail-list">
+    <li><strong>ID:</strong> {{ usuario.id }}</li>
+    <li><strong>Usuario:</strong> {{ usuario.username }}</li>
+    <li><strong>Nombre:</strong> {{ usuario.nombres }} {{ usuario.apellidos }}</li>
+    <li><strong>Email:</strong> {{ usuario.email }}</li>
+    <li><strong>RUT:</strong> {{ usuario.rut }}</li>
+    <li><strong>Celular:</strong> {{ usuario.celular }}</li>
+    <li><strong>Dirección:</strong> {{ usuario.direccion }}</li>
+    <li><strong>Nacionalidad:</strong> {{ usuario.nacionalidad }}</li>
+    <li><strong>Comuna:</strong> {{ usuario.comuna }}</li>
+    <li><strong>Rol:</strong> {{ usuario.rol }}</li>
+    <li><strong>Sexo:</strong> {{ usuario.sexo }}</li>
+  </ul>
+
+  <!-- Acción: Editar / Eliminar (ahora al final) -->
+  <div class="action-buttons">
+    <a href="{% url 'personal_edit' usuario.id %}" class="btn-edit">✎ Editar</a>
+    <form method="post" action="{% url 'personal_delete' usuario.id %}" class="inline-form">
+      {% csrf_token %}
+      <button type="submit" class="btn-delete"
+              onclick="return confirm('¿Eliminar este trabajador?');">
+        🗑 Eliminar
+      </button>
+    </form>
+  </div>
+{% endblock %}

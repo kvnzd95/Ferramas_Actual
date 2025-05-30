@@ -1,0 +1,105 @@
+/* Archivo: static/users_frontend/css/personal.css */
+
+/* Listado de personal: tabla centrada */
+/* Centrar el h1 de listado */
+.personal-list-title {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color: #333;
+}
+
+.personal-table {
+  width: 90%;
+  max-width: 900px;
+  margin: 2rem auto;
+  border-collapse: collapse;
+  background: #fff;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+/* Encabezados */
+.personal-table thead {
+  background: #007bff;
+}
+.personal-table th,
+.personal-table td {
+  padding: 0.75rem 1rem;
+  text-align: left;
+}
+.personal-table th {
+  color: #fff;
+  font-weight: 600;
+}
+
+/* Filas */
+.personal-table tbody tr {
+  border-bottom: 1px solid #e0e0e0;
+  transition: background 0.2s;
+}
+.personal-table tbody tr:hover {
+  background: #f5faff;
+}
+
+/* Enlaces “Ver” */
+.personal-table a {
+  color: #007bff;
+  font-weight: 500;
+  text-decoration: none;
+}
+.personal-table a:hover {
+  text-decoration: underline;
+}
+
+/* Detalle de usuario: lista centrada */
+.detail-list {
+  max-width: 600px;
+  margin: 2rem auto;
+  background: #fff;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.detail-list li {
+  padding: 0.6rem 0;
+  border-bottom: 1px solid #e0e0e0;
+}
+.detail-list li:last-child {
+  border-bottom: none;
+}
+
+.detail-list li strong {
+  display: inline-block;
+  width: 140px;
+  font-weight: 600;
+  color: #333;
+}
+
+/* Título de detalle */
+.personal-detail-title {
+  text-align: center;
+  margin: 1.5rem 0;
+  font-size: 1.5rem;
+  color: #333;
+}
+
+/* Buscador encima de la tabla */
+.search-container {
+  max-width: 900px;
+  margin: 1rem auto;
+  text-align: right;
+}
+#search-input {
+  width: 250px;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+#search-input:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 4px rgba(0,123,255,0.3);
+  outline: none;
+}

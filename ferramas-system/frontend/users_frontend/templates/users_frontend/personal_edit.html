@@ -1,0 +1,96 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Editar {{ usuario.username }}{% endblock %}
+
+{% block extra_css %}
+  <link rel="stylesheet" href="{% static 'users_frontend/css/registroPersonal.css' %}">
+{% endblock %}
+
+{% block content %}
+  <h1 class="personal-list-title">Editar Trabajador</h1>
+
+  <form method="post" class="worker-form" autocomplete="off">
+    {% csrf_token %}
+
+    <div class="field">
+      <label>Usuario
+        <input name="username" value="{{ usuario.username }}" required autocomplete="off">
+      </label>
+    </div>
+
+    <div class="field">
+      <label>Email
+        <input name="email" type="email" value="{{ usuario.email }}" required autocomplete="off">
+      </label>
+    </div>
+
+    <div class="field">
+      <label>Nombres
+        <input name="nombres" value="{{ usuario.nombres }}" required autocomplete="off">
+      </label>
+    </div>
+
+    <div class="field">
+      <label>Apellidos
+        <input name="apellidos" value="{{ usuario.apellidos }}" required autocomplete="off">
+      </label>
+    </div>
+
+    <div class="field">
+      <label>RUT
+        <input name="rut" value="{{ usuario.rut }}" required autocomplete="off">
+      </label>
+    </div>
+
+    <div class="field">
+      <label>Celular
+        <input name="celular" value="{{ usuario.celular }}" required autocomplete="off">
+      </label>
+    </div>
+
+    <div class="field">
+      <label>Dirección
+        <input name="direccion" value="{{ usuario.direccion }}" required autocomplete="off">
+      </label>
+    </div>
+
+    <div class="field">
+      <label>Nacionalidad
+        <input name="nacionalidad" value="{{ usuario.nacionalidad }}" required autocomplete="off">
+      </label>
+    </div>
+
+    <div class="field">
+      <label>Comuna
+        <input name="comuna" value="{{ usuario.comuna }}" required autocomplete="off">
+      </label>
+    </div>
+
+    <div class="field">
+      <label>Rol
+        <select name="rol" required>
+          <option value="admin"    {% if usuario.rol == 'admin' %}selected{% endif %}>Administrador</option>
+          <option value="vendedor" {% if usuario.rol == 'vendedor' %}selected{% endif %}>Vendedor</option>
+          <option value="bodeguero" {% if usuario.rol == 'bodeguero' %}selected{% endif %}>Bodeguero</option>
+          <option value="contador" {% if usuario.rol == 'contador' %}selected{% endif %}>Contador</option>
+        </select>
+      </label>
+    </div>
+
+    <div class="field">
+      <label>Sexo
+        <select name="sexo" required>
+          <option value="M" {% if usuario.sexo == 'M' %}selected{% endif %}>Masculino</option>
+          <option value="F" {% if usuario.sexo == 'F' %}selected{% endif %}>Femenino</option>
+          <option value="O" {% if usuario.sexo == 'O' %}selected{% endif %}>Otro</option>
+        </select>
+      </label>
+    </div>
+
+    <div class="form-actions">
+      <button type="submit">Guardar cambios</button>
+      <a href="{% url 'personal_detail' usuario.id %}" class="btn-cancel">Cancelar</a>
+    </div>
+  </form>
+{% endblock %}

@@ -1,0 +1,72 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}Mi App{% endblock %}</title>
+  <link rel="stylesheet" href="{% static 'users_frontend/css/base.css' %}">
+  {% block extra_css %}{% endblock %}
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="logo">
+        <a href="{% url 'base' %}">
+          <img src="{% static 'users_frontend/img/logo01.png' %}" alt="Ferramas Logo">
+        </a>
+      </div>
+
+      <nav class="main-nav">
+        <ul>
+          <li><a href="{% url 'base' %}">Inicio</a></li>
+          <li><a href="#">Servicios</a></li>
+          <li><a href="#">Productos</a></li>
+
+
+          {% if request.session.role == 'admin' %}
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle">
+              Personal <span class="arrow">&#9662;</span>
+            </a>
+            <ul class="dropdown-menu">
+              <li><a href="{% url 'registroPersonal' %}">Registrar</a></li>
+              <li><a href="{% url 'personal_list' %}">Listado</a></li>
+              
+            </ul>
+          </li>
+          {% endif %}
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        {% if request.session.token %}
+          <span class="welcome">Hola, {{ request.session.username }}</span>
+          <form method="post" action="{% url 'logout' %}">
+            {% csrf_token %}
+            <button class="btn-access" type="submit">Cerrar sesión</button>
+          </form>
+        {% else %}
+          <a class="btn-access" href="{% url 'login' %}">Acceder</a>
+        {% endif %}
+      </div>
+    </div>
+  </header>
+
+  <main>
+    {% if messages %}
+      <ul class="messages">
+        {% for message in messages %}
+          <li class="{{ message.tags }}">{{ message }}</li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+
+    {% block content %}{% endblock %}
+  </main>
+
+  {% block extra_js %}{% endblock %}
+</body>
+</html>

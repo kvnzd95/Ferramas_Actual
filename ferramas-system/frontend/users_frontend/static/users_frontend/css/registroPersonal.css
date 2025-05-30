@@ -1,0 +1,130 @@
+/* Ajusta el main para que no quede bajo el header y centre verticalmente el h1 y el form */
+main {
+  padding-top: 80px;
+  background: #f5f5f5;
+  min-height: calc(100vh - 80px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+/* Formulario “flotante” centrado */
+.worker-form {
+  background: #fff;
+  max-width: 480px;
+  width: 100%;
+  margin: 20px 0;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+  position: relative;
+}
+
+/* Título centrado */
+h1.personal-list-title {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color: #020202;
+}
+
+/* Campos del formulario */
+.worker-form .field {
+  margin-bottom: 1.2rem;
+}
+.worker-form .field label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: #444;
+}
+.worker-form .field input,
+.worker-form .field select {
+  width: 100%;
+  padding: 0.7rem 1rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.worker-form .field input:focus,
+.worker-form .field select:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 4px rgba(0,123,255,0.3);
+  outline: none;
+}
+
+/* Acciones (Guardar y Cancelar) */
+.worker-form .form-actions {
+  margin-top: 1.5rem;
+  text-align: right;
+}
+.worker-form .form-actions button[type="submit"] {
+  background: #007bff;
+  color: #fff;
+  border: none;
+  padding: 0.75rem 1.2rem;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.worker-form .form-actions button[type="submit"]:hover {
+  background: #0056b3;
+}
+
+/* Botón Cancelar */
+.worker-form .form-actions .btn-cancel {
+  display: inline-block;
+  margin-left: 0.75rem;
+  padding: 0.75rem 1.2rem;
+  background: transparent;
+  color: #6c757d;
+  border: 2px solid #6c757d;
+  border-radius: 6px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.2s, color 0.2s;
+}
+.worker-form .form-actions .btn-cancel:hover {
+  background: #6c757d;
+  color: #fff;
+}
+
+/* Mensajes */
+.messages {
+  max-width: 480px;
+  margin: 1rem auto;
+  list-style: none;
+  padding: 0;
+}
+.messages li {
+  padding: 0.8rem 1rem;
+  border-radius: 6px;
+  margin-bottom: 0.8rem;
+  text-align: center;
+  font-weight: 500;
+}
+.messages li.success { background: #d4edda; color: #155724; }
+.messages li.error   { background: #f8d7da; color: #721c24; }
+/* Estilo específico para el botón "Crear Trabajador" */
+.worker-form > button[type="submit"] {
+  display: block;            /* para poder centrarlo con margin auto */
+  width: 100%;               /* ocupa todo el ancho disponible */
+  max-width: 150px;          /* ancho máximo razonable */
+  margin: 2rem auto 0;       /* 2rem arriba, auto centrar, 0 abajo */
+  
+  padding: 1rem 0;           /* 1rem arriba/abajo, 0 laterales */
+  font-size: 1rem;         /* texto más grande */
+  font-weight: 600;          /* negrita */
+  
+  background-color: #007bff; /* mismo azul de los otros botones */
+  color: #fff;               /* texto blanco */
+  border: none;
+  border-radius: 6px;
+  
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+.worker-form > button[type="submit"]:hover {
+  background-color: #0056b3;
+}

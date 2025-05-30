@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Listado de Personal{% endblock %}
+
+{% block extra_css %}
+  <link rel="stylesheet" href="{% static 'users_frontend/css/personal.css' %}">
+{% endblock %}
+
+{% block content %}
+  <h1 class="personal-list-title">Personal Registrado</h1>
+
+  <!-- Buscador -->
+  <div class="search-container">
+    <input
+      type="text"
+      id="search-input"
+      placeholder="Buscar por usuario, nombre o rol…"
+    >
+  </div>
+
+  <table class="personal-table" id="personal-table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Usuario</th>
+        <th>Nombre completo</th>
+        <th>Rol</th>
+        <th>Acción</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for u in usuarios %}
+      <tr>
+        <td>{{ u.id }}</td>
+        <td>{{ u.username }}</td>
+        <td>{{ u.nombres }} {{ u.apellidos }}</td>
+        <td>{{ u.rol }}</td>
+        <td><a href="{% url 'personal_detail' u.id %}">Ver</a></td>
+      </tr>
+      {% empty %}
+      <tr>
+        <td colspan="5">No hay personal registrado.</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const input = document.getElementById('search-input');
+    const table = document.getElementById('personal-table').tBodies[0];
+    input.addEventListener('input', () => {
+      const filter = input.value.toLowerCase();
+      Array.from(table.rows).forEach(row => {
+        const text = row.textContent.toLowerCase();
+        row.style.display = text.includes(filter) ? '' : 'none';
+      });
+    });
+  });
+</script>
+{% endblock %}

@@ -1,0 +1,50 @@
+#version: '3.8'
+
+services:
+  mysql:
+    image: mysql:8
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpass
+      MYSQL_DATABASE: Usuario
+      MYSQL_USER: Usuario
+      MYSQL_PASSWORD: Usuario123
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    restart: always
+    depends_on:
+      - mysql
+    environment:
+      PMA_HOST: mysql
+    ports:
+      - "8080:80"
+
+  usuarios:
+    build:
+      context: ./usuario_service
+      dockerfile: Dockerfile
+    volumes:
+      - ./usuario_service:/app
+    ports:
+      - "8001:8000"
+    depends_on:
+      - mysql
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    volumes:
+      - ./frontend/:/app/
+    ports:
+      - "8000:8000"
+    depends_on:
+      - usuarios
+
+volumes:
+  mysql_data:

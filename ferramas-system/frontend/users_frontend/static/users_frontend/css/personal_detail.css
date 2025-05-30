@@ -1,0 +1,78 @@
+/* Archivo: static/users_frontend/css/personal_detail.css */
+
+/* -------------------------- */
+/* Importación de estilos base
+   Para reutilizar .action-buttons, .btn-edit, .btn-delete, etc.,
+   si ya los tienes en personal.css, los importamos aquí. */
+@import url("personal.css");
+
+/* -------------------------- */
+/* Contenedor de los botones de acción (editar / eliminar) */
+.action-buttons {
+  max-width: 600px;       /* Igual ancho que el detalle */
+  margin: 1rem auto;      /* Centrado horizontal y espacio arriba */
+  text-align: right;      /* Alinea los botones a la derecha */
+}
+
+/* Formulario inline para el botón eliminar */
+.inline-form {
+  display: inline-block;  /* Permite que el formulario viva en línea */
+  margin-left: 0.5rem;    /* Separación respecto al botón editar */
+}
+
+/* -------------------------- */
+/* Botón “Editar” */
+.btn-edit {
+  display: inline-block;        /* Se comporta como botón en línea */
+  padding: 0.4rem 0.8rem;       /* Espacio interno */
+  background: #ffc107;          /* Amarillo (warning) */
+  color: #000;                  /* Texto negro */
+  border-radius: 4px;           /* Bordes redondeados */
+  text-decoration: none;        /* Sin subrayado */
+  font-weight: 500;             /* Negrita moderada */
+  transition: opacity 0.2s;     /* Efecto suave al hover */
+}
+.btn-edit:hover {
+  opacity: 0.9;                 /* Ligeramente transparente al pasar ratón */
+}
+
+/* -------------------------- */
+/* Botón “Eliminar” */
+.btn-delete {
+  padding: 0.4rem 0.8rem;       /* Espacio interno */
+  background: #dc3545;          /* Rojo (danger) */
+  color: #fff;                  /* Texto blanco */
+  border: none;                 /* Sin borde */
+  border-radius: 4px;           /* Bordes redondeados */
+  cursor: pointer;              /* Manito al pasar ratón */
+  transition: opacity 0.2s;     /* Efecto suave al hover */
+}
+.btn-delete:hover {
+  opacity: 0.9;                 /* Ligeramente transparente al pasar ratón */
+}
+
+/* -------------------------- */
+/* Botón “Volver” */
+.back-button-container {
+  max-width: 600px;
+  margin: 0.5rem auto 1rem;     /* Centrado horizontal y espacio */
+  text-align: left;             /* Alinea el botón a la izquierda */
+}
+.back-button {
+  display: inline-block;        /* Comportamiento de botón en línea */
+  padding: 0.5rem 1rem;         /* Espacio interno */
+  background: #007bff;          /* Azul primario */
+  color: #fff;                  /* Texto blanco */
+  text-decoration: none;        /* Sin subrayado */
+  border-radius: 4px;           /* Bordes redondeados */
+  font-weight: 500;             /* Negrita moderada */
+  transition: background 0.2s;  /* Efecto suave al hover */
+}
+.back-button:hover {
+  background: #0056b3;          /* Azul más oscuro al pasar ratón */
+}
+
+/* -------------------------- */
+/* Título y lista ya definidos previamente */
+/* .personal-detail-title, .detail-list, etc. */
+

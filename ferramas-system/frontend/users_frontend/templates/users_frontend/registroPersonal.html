@@ -1,0 +1,122 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block extra_css %}
+  <link rel="stylesheet" href="{% static 'users_frontend/css/registroPersonal.css' %}">
+{% endblock %}
+
+
+{% block content %}
+  <h1>Crear Trabajador</h1>
+
+  {% if messages %}
+    <ul class="messages">
+      {% for message in messages %}
+        <li class="{{ message.tags }}">{{ message }}</li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+
+  <form method="post" class="worker-form" autocomplete="off">
+    {% csrf_token %}
+
+    <div class="field">
+      <label>Usuario
+        <input
+          name="username"
+          required
+          autocomplete="off"
+          autocorrect="off"
+          autocapitalize="none"
+        >
+      </label>
+    </div>
+
+    <div class="field">
+      <label>Contraseña
+        <input
+          name="password"
+          type="password"
+          required
+          autocomplete="new-password"
+        >
+      </label>
+    </div>
+
+    <div class="field">
+      <label>Email
+        <input
+          name="email"
+          type="email"
+          required
+          autocomplete="off"
+        >
+      </label>
+    </div>
+
+    <div class="field">
+      <label>Nombres
+        <input name="nombres" required autocomplete="off">
+      </label>
+    </div>
+
+    <div class="field">
+      <label>Apellidos
+        <input name="apellidos" required autocomplete="off">
+      </label>
+    </div>
+
+    <div class="field">
+      <label>RUT
+        <input name="rut" required autocomplete="off">
+      </label>
+    </div>
+
+    <div class="field">
+      <label>Celular
+        <input name="celular" required autocomplete="off">
+      </label>
+    </div>
+
+    <div class="field">
+      <label>Dirección
+        <input name="direccion" required autocomplete="off">
+      </label>
+    </div>
+
+    <div class="field">
+      <label>Nacionalidad
+        <input name="nacionalidad" required autocomplete="off">
+      </label>
+    </div>
+
+    <div class="field">
+      <label>Comuna
+        <input name="comuna" required autocomplete="off">
+      </label>
+    </div>
+
+    <div class="field">
+      <label>Rol
+        <select name="rol" required>
+          <option value="admin">Administrador</option>
+          <option value="vendedor">Vendedor</option>
+          <option value="bodeguero">Bodeguero</option>
+          <option value="contador">Contador</option>
+        </select>
+      </label>
+    </div>
+
+    <div class="field">
+      <label>Sexo
+        <select name="sexo" required>
+          <option value="M">Masculino</option>
+          <option value="F">Femenino</option>
+          <option value="O">Otro</option>
+        </select>
+      </label>
+    </div>
+
+    <button type="submit">Crear Trabajador</button>
+  </form>
+{% endblock %}

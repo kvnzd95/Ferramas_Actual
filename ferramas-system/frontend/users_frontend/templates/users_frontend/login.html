@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Iniciar Sesión{% endblock %}
+
+{% block extra_css %}
+  <link rel="stylesheet" href="{% static 'users_frontend/css/login.css' %}">
+{% endblock %}
+
+{% block content %}
+  <div class="login-container">
+    <h2>Iniciar Sesión</h2>
+
+    {% if messages %}
+      <div class="message">
+        {% for msg in messages %}
+          {{ msg }}
+        {% endfor %}
+      </div>
+    {% endif %}
+
+    <form method="post" autocomplete="off">
+      {% csrf_token %}
+      <label>
+        Usuario
+        <input type="text" name="username" required autocomplete="username">
+      </label>
+      <label>
+        Contraseña
+        <input type="password" name="password" required autocomplete="current-password">
+      </label>
+      <button type="submit">Entrar</button>
+    </form>
+  </div>
+{% endblock %}
